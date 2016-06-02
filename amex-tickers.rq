@@ -9,10 +9,8 @@ CONSTRUCT {
  :ipoYear ?IPOyear ; :sector ?Sector ; :industry ?industry ; foaf:page ?link ;
  :market [ :lastSale ?LastSale ; :marketCap ?MarketCap ; dcterms:date ?now  ] ;
  :exchange :AMEX .
-}
-  WHERE {
-BIND (URI(CONCAT("#", ?Symbol)) AS ?uri)
-BIND (URI(?Summary_Quote) AS ?link)
-BIND (xsd:date(NOW()) as ?now)
-
+} WHERE {
+ BIND (URI(CONCAT("#", ?Symbol)) AS ?uri)
+ BIND (URI(?Summary_Quote) AS ?link)
+ BIND (xsd:date(NOW()) as ?now)
 }

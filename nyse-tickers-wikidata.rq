@@ -5,5 +5,5 @@ WHERE {
     ?x <http://www.wikidata.org/prop/P414> ?stmt .
 	?stmt <http://www.wikidata.org/prop/qualifier/P249> ?ticker .
     ?stmt <http://www.wikidata.org/prop/statement/P414> <http://www.wikidata.org/entity/Q13677> . # NYSE
-    BIND (URI(CONCAT("http://harth.org/andreas/2016/tickers/nyse-tickers.ttl#", ?ticker)) AS ?uri)
+    BIND (URI(CONCAT("http://harth.org/andreas/2016/tickers/nyse-tickers.ttl#", UCASE(?ticker))) AS ?uri)
 }
