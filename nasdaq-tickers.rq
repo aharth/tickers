@@ -1,0 +1,18 @@
+PREFIX : <http://harth.org/andreas/2016/tickers/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+ ?uri :ticker ?Symbol ;
+ :ipoYear ?IPOyear ; :sector ?Sector ; :industry ?industry ; foaf:page ?link ;
+ :market [ :lastSale ?LastSale ; :marketCap ?MarketCap ; dcterms:date ?now  ] ;
+ :exchange :NASDAQ .
+}
+#  FROM <file:nasdaq-tickers.csv>
+  WHERE {
+BIND (URI(CONCAT("#", ?Symbol)) AS ?uri)
+BIND (URI(?Summary_Quote) AS ?link)
+BIND (xsd:date(NOW()) as ?now)
+}
